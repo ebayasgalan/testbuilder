@@ -36,32 +36,53 @@ var detectNetwork = function (cardNumber) {
   if (length === 16) {
     if (cardNumber.startsWith('4')) {
       return 'Visa';
-    } else if (cardNumber.startsWith('51')) {
-      return 'MasterCard';
-    } else if (cardNumber.startsWith('52')) {
-      return 'MasterCard';
-    } else if (cardNumber.startsWith('53')) {
-      return 'MasterCard';
-    } else if (cardNumber.startsWith('54')) {
-      return 'MasterCard';
-    } else if (cardNumber.startsWith('55')) {
-      return 'MasterCard';
     } else if (cardNumber.startsWith('6011')) {
       return 'Discover';
     } else if (cardNumber.startsWith('65')) {
       return 'Discover';
-    } else if (cardNumber.startsWith('644')) {
-      return 'Discover';
-    } else if (cardNumber.startsWith('645')) {
-      return 'Discover';
-    } else if (cardNumber.startsWith('646')) {
-      return 'Discover';
-    } else if (cardNumber.startsWith('647')) {
-      return 'Discover';
-    } else if (cardNumber.startsWith('648')) {
-      return 'Discover';
-    } else if (cardNumber.startsWith('649')) {
-      return 'Discover';
+    } else if (cardNumber.startsWith('4903')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('4905')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('4911')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('4936')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('564182')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('633110')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('6333')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('6759')) {
+      return 'Switch';
+    }
+    for (let i = 51; i <= 55; i++) {
+      const str = String(i);
+      if (cardNumber.startsWith(str)) { return 'MasterCard'; }
+    }
+    for (let i = 644; i <= 649; i++) {
+      const str = String(i);
+      if (cardNumber.startsWith(str)) { return 'Discover'; }
+    }
+  }
+  if (length === 18) {
+    if (cardNumber.startsWith('4903')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('4905')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('4911')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('4936')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('564182')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('633110')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('6333')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('6759')) {
+      return 'Switch';
     }
   }
   //Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
@@ -72,18 +93,26 @@ var detectNetwork = function (cardNumber) {
       return 'Discover';
     } else if (cardNumber.startsWith('65')) {
       return 'Discover';
-    } else if (cardNumber.startsWith('644')) {
-      return 'Discover';
-    } else if (cardNumber.startsWith('645')) {
-      return 'Discover';
-    } else if (cardNumber.startsWith('646')) {
-      return 'Discover';
-    } else if (cardNumber.startsWith('647')) {
-      return 'Discover';
-    } else if (cardNumber.startsWith('648')) {
-      return 'Discover';
-    } else if (cardNumber.startsWith('649')) {
-      return 'Discover';
+    } else if (cardNumber.startsWith('4903')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('4905')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('4911')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('4936')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('564182')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('633110')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('6333')) {
+      return 'Switch';
+    } else if (cardNumber.startsWith('6759')) {
+      return 'Switch';
+    }
+    for (let i = 644; i <= 649; i++) {
+      const str = String(i);
+      if (cardNumber.startsWith(str)) { return 'Discover'; }
     }
   }
   //Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
@@ -98,5 +127,20 @@ var detectNetwork = function (cardNumber) {
       return 'Maestro';
     }
   }
+  if (length >= 16 && length <= 19) {
+    for (let i = 622126; i <= 622925; i++) {
+      const str = String(i);
+      if (cardNumber.startsWith(str)) { return 'China UnionPay'; }
+    }
+    for (let i = 624; i <= 626; i++) {
+      const str = String(i);
+      if (cardNumber.startsWith(str)) { return 'China UnionPay'; }
+    }
+    for (let i = 6282; i <= 6288; i++) {
+      const str = String(i);
+      if (cardNumber.startsWith(str)) { return 'China UnionPay'; }
+    }
+  }
   return null;
 };
+

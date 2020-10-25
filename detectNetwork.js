@@ -116,18 +116,26 @@ var detectNetwork = function (cardNumber) {
     }
   }
   //Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
-  if (length >= 12 && length <= 19) {
+  if (length === 12) {
     if (cardNumber.startsWith('5018')) {
-      return 'Maestro';
-    } else if (cardNumber.startsWith('5020')) {
-      return 'Maestro';
-    } else if (cardNumber.startsWith('5038')) {
-      return 'Maestro';
-    } else if (cardNumber.startsWith('6304')) {
       return 'Maestro';
     }
   }
-  if (length >= 16 && length <= 19) {
+  if (length >= 12 || length <= 19) {
+    if (cardNumber.startsWith('5018')) {
+      return 'Maestro';
+    }
+    if (cardNumber.startsWith('5020')) {
+      return 'Maestro';
+    }
+    if (cardNumber.startsWith('5038')) {
+      return 'Maestro';
+    }
+    if (cardNumber.startsWith('6304')) {
+      return 'Maestro';
+    }
+  }
+  if (length >= 16 || length <= 19) {
     for (let i = 622126; i <= 622925; i++) {
       const str = String(i);
       if (cardNumber.startsWith(str)) { return 'China UnionPay'; }

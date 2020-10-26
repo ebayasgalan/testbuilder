@@ -34,9 +34,7 @@ var detectNetwork = function (cardNumber) {
     }
   }
   if (length === 16) {
-    if (cardNumber.startsWith('4')) {
-      return 'Visa';
-    } else if (cardNumber.startsWith('6011')) {
+    if (cardNumber.startsWith('6011')) {
       return 'Discover';
     } else if (cardNumber.startsWith('65')) {
       return 'Discover';
@@ -56,6 +54,8 @@ var detectNetwork = function (cardNumber) {
       return 'Switch';
     } else if (cardNumber.startsWith('6759')) {
       return 'Switch';
+    } else if (cardNumber.startsWith('4')) {
+      return 'Visa';
     }
     for (let i = 51; i <= 55; i++) {
       const str = String(i);
@@ -87,9 +87,7 @@ var detectNetwork = function (cardNumber) {
   }
   //Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
   if (length === 19) {
-    if (cardNumber.startsWith('4')) {
-      return 'Visa';
-    } else if (cardNumber.startsWith('6011')) {
+    if (cardNumber.startsWith('6011')) {
       return 'Discover';
     } else if (cardNumber.startsWith('65')) {
       return 'Discover';
@@ -109,6 +107,8 @@ var detectNetwork = function (cardNumber) {
       return 'Switch';
     } else if (cardNumber.startsWith('6759')) {
       return 'Switch';
+    } else if (cardNumber.startsWith('4')) {
+      return 'Visa';
     }
     for (let i = 644; i <= 649; i++) {
       const str = String(i);
@@ -121,7 +121,7 @@ var detectNetwork = function (cardNumber) {
       return 'Maestro';
     }
   }
-  if (length >= 12 || length <= 19) {
+  if (length >= 12 && length <= 19) {
     if (cardNumber.startsWith('5018')) {
       return 'Maestro';
     }
